@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE = 'your-dockerhub-username/app-name'
+        DOCKER_IMAGE = 'hemantrajekasabe/my-node-app'
     }
     stages {
         stage('Checkout Code') {
@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Push Docker Image') {
             steps {
-                withDockerRegistry([credentialsId: 'dockerhub-creds', url: '']) {
+                withDockerRegistry([credentialsId: 'hemant-docker-credentials', url: '']) {
                     sh 'docker push $DOCKER_IMAGE'
                 }
             }
